@@ -1,9 +1,9 @@
 
 
-var B = []; // Buffer declaration
-var buff_limit = 24; // buffer limit is 24
-var S = buff_limit; // declaring space available with initial value set as buffer limit
-var I = 0; // declaring and initializing items available as 0
+var bufferAvailable = []; // Buffer declaration
+var BUFFER_LIMIT = 24; // buffer limit is 24
+var spaceAvailable = BUFFER_LIMIT; // declaring space available with initial value set as buffer limit
+var itemAvailable = 0; // declaring and initializing items available as 0
 var activity = document.getElementById("activity");
 var gui = document.getElementById("gui");
 var getProducerinput = document.getElementById("producer");
@@ -21,9 +21,9 @@ document.getElementById("submit").addEventListener("click",function () {
 // function for Producer
 function producer() {
     var newProducerMessage = document.createElement("b");
-    if (S >= pInput) { // checking Space available is greater than or equal to producer
+    if (spaceAvailable >= pInput) { // checking Space available is greater than or equal to producer
         for (var i = 0; i < pInput; i++) {
-            B.push("item"); // pushing items in to space in buffer.
+            bufferAvailable.push("item"); // pushing items in to space in buffer.
             var newPizza = document.createElement("li");
             gui.appendChild(newPizza);
         }
@@ -35,9 +35,9 @@ function producer() {
         activity.appendChild(newProducerMessage);
         activity.appendChild(document.createElement("br"));
 
-        console.log(B);
-        I = B.length; // signaling no of items available
-        console.log(I);
+        console.log(bufferAvailable);
+        itemAvailable = bufferAvailable.length; // signaling no of items available
+        console.log(itemAvailable);
     } else { // condition for in availablity of space
         console.log("no space available");
         newProducerMessage.textContent = "No space available";
@@ -52,21 +52,20 @@ function producer() {
 function consumer() {
     var newConsumerMessage = document.createElement("b");
     setTimeout(function() { // to maintain a 1sec gap between producer and consumer
-        if (I >= cInput) { // checking for available items
+        if (itemAvailable >= cInput) { // checking for available items
 
-            B.splice(0, cInput); // consuming items from the buffer
-            for (i = 0; i < cInput; i++) {
+            bufferAvailable.splice(0, cInput); // consuming items from the buffer
+            for (var i = 0; i < cInput; i++) {
                 gui.removeChild(gui.lastChild);
             }
             console.log("Consumer removed " + cInput + " items");
-
             newConsumerMessage.textContent= "Consumer removed " + cInput + " items";
             newConsumerMessage.style = "color:orange";
             activity.appendChild(newConsumerMessage);
             activity.appendChild(document.createElement("br"));
-            console.log(B);
-            S = buff_limit - B.length; // signaling no of space available
-            console.log(S);
+            console.log(bufferAvailable);
+            spaceAvailable = BUFFER_LIMIT - bufferAvailable.length; // signaling no of space available
+            console.log(spaceAvailable);
         } else {
             console.log("no items available");
             newConsumerMessage.textContent = "No items available";
