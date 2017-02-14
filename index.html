@@ -7,7 +7,6 @@ A program to represent the producer and consumer problem.
  -->
 
 <head>
-    <script src="jquery-2.1.4.min.js"></script>
     <style>
         li {
             float: left;
@@ -50,63 +49,4 @@ A program to represent the producer and consumer problem.
 
 </html>
 
-<script type="text/javascript">
-    //Variable Declaration
-    var B = []; // Buffer declaration
-    var buff_limit = 24; // buffer limit is 24
-    var S = buff_limit; // declaring space available with initial value set as buffer limit
-    var I = 0; // declaring and initializing items available as 0
-    // click event for submit button.
-    // getting values from inpur field
-    $("#submit").click(function() {
-        window.P = parseInt($("#producer").val()); // getting producer value
-        window.C = parseInt($("#consumer").val()); // getting consumer value
-        onclk();
-    });
-    var itr = "item";
-    //Once started
-    // function for Producer
-    function producer() {
-        if (S >= window.P) { // checking Space available is greater than or equal to producer 
-            for (i = 0; i < window.P; i++) {
-                B.push(itr); // pushing items in to space in buffer.
-                $("#gui").append("<li></li>");
-            }
-            // Notification for 
-            console.log("Producer pushed" + window.P + "items");
-            $("#activity").append("<b style=color:green>Producer pushed " + window.P + " items</b><br>");
-            console.log(B);
-            I = B.length; // signaling no of items available
-            console.log(I);
-        } else { // condition for in availablity of space
-            console.log("no space available");
-            $("#activity").append("<b style=color:red>No space available<b><br>");
-        }
-    }
-
-    //consumer function to consume items
-    function consumer() {
-        setTimeout(function() { // to maintain a 1sec gap between producer and consumer
-            if (I >= window.C) { // checking for available items
-                for (i = 0; i < window.C; i++) {
-                    B.splice(0, 1); // consuming items fron the buffer
-                    $("li").first().remove();
-                }
-                console.log("Consumer removed " + window.C + " items");
-                $("#activity").append("<b style=color:orange>Consumer removed " + window.C + " items</b><br>");
-                console.log(B);
-                S = buff_limit - B.length; // signaling no of space available
-                console.log(S);
-            } else {
-                console.log("no items available");
-                $("#activity").append("<b style=color:red>No items available<b><br>");
-            }
-        }, 1000);
-    }
-    //click event triggered for submit button.
-    function onclk() {
-        var set_prod_func = setInterval(producer, 2000); // initiating the producer function on click
-        var set_con_func = setInterval(consumer, 2000); // initiating the consumer function on click
-        console.log("started");
-    }
-</script>
+<script type="text/javascript" src="producer-consumer.js" ></script>
