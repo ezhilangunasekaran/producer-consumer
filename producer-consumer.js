@@ -1,7 +1,7 @@
 
 
 var bufferAvailable = []; // Buffer declaration
-var BUFFER_LIMIT = 24; // buffer limit is 24
+const BUFFER_LIMIT = 24; // buffer limit is 24
 var spaceAvailable = BUFFER_LIMIT; // declaring space available with initial value set as buffer limit
 var itemAvailable = 0; // declaring and initializing items available as 0
 var activity = document.getElementById("activity");
@@ -25,6 +25,7 @@ function producer() {
         for (var i = 0; i < pInput; i++) {
             bufferAvailable.push("item"); // pushing items in to space in buffer.
             var newPizza = document.createElement("li");
+            newPizza.className = 'col-xs-2';
             gui.appendChild(newPizza);
         }
         // Notification for
