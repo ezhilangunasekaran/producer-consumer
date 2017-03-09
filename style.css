@@ -2,7 +2,7 @@
     width: 940px !important; }
 #gui li {
     float: left;
-    background: transparent url(https://cloud.githubusercontent.com/assets/4058750/10989203/fd189b02-8409-11e5-93e2-9dcd442014a2.png) repeat scroll 6px 0 / 77px auto;
+    background: transparent url(https://cloud.githubusercontent.com/assets/4058750/10989203/fd189b02-8409-11e5-93e2-9dcd442014a2.png) repeat scroll 6px -4px / 77px auto;
     height: 42px;
 }
 .row div{
@@ -10,7 +10,7 @@
 }
 #gui{
     padding: 0px;
-    list-style: outside none none; margin: 0px;height: 185px;
+    list-style: outside none none; margin: 0px;height: 175px;
     background: transparent url(https://cloud.githubusercontent.com/assets/4058750/10989223/2630b100-840a-11e5-8a3a-a2e6d9590bb0.png) repeat scroll 6px 0 / 77px auto;
 }
 #activity{
